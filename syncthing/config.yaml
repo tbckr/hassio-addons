@@ -1,0 +1,52 @@
+# Copyright (c) 2023 Tim <tbckr>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+
+name: Syncthing
+version: "1.0.0"
+slug: syncthing
+description: "Syncthing is a continuous file synchronization program in a de-centralized way"
+url: https://github.com/tbckr/hassio-addons/tree/main/syncthing
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+image: ghcr.io/tbckr/hass-syncthing-{arch}
+init: false
+ports:
+  8384/tcp: null
+  22000/tcp: 22000
+  21027/udp: 21027
+ports_description:
+  8384/tcp: Web frontend (not needed with Ingress)
+  22000/tcp: Sync protocol
+  21027/udp: Discovery broadcast
+ingress: true
+ingress_port: 8384
+panel_title: Syncthing
+panel_icon: mdi:sync
+map:
+  - share:rw
+  - backup:rw
+  - addons:rw
+  - ssl:rw
+  - media:rw

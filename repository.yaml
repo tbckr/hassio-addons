@@ -1,0 +1,4 @@
+# https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
+name: tbckr's Home Assistant add-on repository
+url: 'https://github.com/tbckr/hassio-addons'
+maintainer: "tbckr <11543666+tbckr@users.noreply.github.com>"
