@@ -35,8 +35,10 @@ on:
 
 jobs:
   init:
-    runs-on: ubuntu-latest
     name: Initialize builds
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       changed_addons: ${{ steps.changed_addons.outputs.addons }}
       changed: ${{ steps.changed_addons.outputs.changed }}
@@ -78,10 +80,13 @@ jobs:
             echo "No add-on had any monitored files changed (${{ env.MONITORED_FILES }})";
           fi
   build:
+    name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
     needs: init
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     if: needs.init.outputs.changed == 'true'
-    name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
     strategy:
       matrix:
         addon: ${{ fromJson(needs.init.outputs.changed_addons) }}
