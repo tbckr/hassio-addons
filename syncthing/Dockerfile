@@ -19,8 +19,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-
-ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:3.19
+ARG BUILD_FROM
 FROM $BUILD_FROM
 
 COPY rootfs /
