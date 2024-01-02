@@ -21,9 +21,7 @@
 
 ARG BUILD_FROM
 FROM $BUILD_FROM
-
 COPY rootfs /
-
 # renovate: datasource=repology depName=alpine_3_19/syncthing versioning=loose
 ENV SYNCTHING_VERSION="1.27.1-r1"
 RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
